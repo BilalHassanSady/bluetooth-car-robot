@@ -1,0 +1,91 @@
+#include<SoftwareSerial.h>
+
+#define IN1 12//controll motor pins
+#define IN2 11
+#define IN3 10
+#define IN4 9
+
+SoftwareSerial mySerial(7, 8); // RX, TX
+
+
+void setup()
+{
+  //Serial.begin(9600);
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+  mySerial.begin(9600);
+}
+
+void loop()
+{
+  while (mySerial.available()==0){}
+  
+    char x = mySerial.read();
+    if (x=='a') {
+      //Serial.println("forward");
+       forward();
+    }
+    if (x=='b') {
+  //   Serial.println("back");
+       reverse();
+    }
+    if (x=='c') {
+    //  Serial.println("right");
+      right();
+    }
+    if (x=='d') {
+   //   Serial.println("left");
+        left();
+    }
+    if(x=='e'){
+   // Serial.println("stop");
+     stoprobot();
+    }
+  
+}
+
+void forward()
+{
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void reverse()
+{
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void left()
+{
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void right()
+{
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
+
+void stoprobot()
+{
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
