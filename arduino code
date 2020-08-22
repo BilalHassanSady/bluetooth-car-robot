@@ -4,7 +4,8 @@
 #define IN2 11
 #define IN3 10
 #define IN4 9
-
+#define ENA 8
+$define ENB 7
 SoftwareSerial mySerial(7, 8); // RX, TX
 
 
@@ -15,6 +16,11 @@ void setup()
   pinMode(IN2, OUTPUT);
   pinMode(IN3, OUTPUT);
   pinMode(IN4, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
+  digitalWrite(ENA, 1);
+  pinMode(ENB, 1);
+
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
   digitalWrite(IN3, LOW);
