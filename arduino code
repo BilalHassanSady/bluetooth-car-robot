@@ -5,7 +5,7 @@
 #define IN3 10
 #define IN4 9
 #define ENA 8
-$define ENB 7
+#define ENB 7
 SoftwareSerial mySerial(7, 8); // RX, TX
 
 
